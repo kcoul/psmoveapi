@@ -141,14 +141,14 @@ Tracker::Tracker()
       m_tracker(psmove_tracker_new()),
       m_fusion(psmove_fusion_new(m_tracker, 1., 1000.))
 {
-    psmove_tracker_set_mirror(m_tracker, PSMove_True);
-    psmove_tracker_set_exposure(m_tracker, Exposure_HIGH);
+    psmove_tracker_set_mirror(m_tracker, true);
+    psmove_tracker_set_exposure(m_tracker, 0.1 /*Exposure_HIGH*/);
 
     m_moves = (PSMove**)calloc(m_move_count, sizeof(PSMove*));
     for (int i=0; i<m_move_count; i++) {
         m_moves[i] = psmove_connect_by_id(i);
 
-        psmove_enable_orientation(m_moves[i], PSMove_True);
+        psmove_enable_orientation(m_moves[i], true);
         assert(psmove_has_orientation(m_moves[i]));
 
         while (psmove_tracker_enable(m_tracker, m_moves[i]) != Tracker_CALIBRATED);

@@ -7,3 +7,9 @@ external/opencv
 __pycache__
 docs/_build
 /upload
+
+#kcoul
+.idea/
+build-x64/
+cmake-build-debug/
+cmake-build-release/
